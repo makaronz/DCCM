@@ -7,68 +7,68 @@ This document provides a comprehensive guide to color management in digital cine
 ## Table of Contents
 
 1.  **Introduction & Theoretical Foundations**
-    *   [1.1 Basic Color Science](Digital_Cinema_Color_Management.md#11-basic-color-science)
-    *   [1.2 Gamma, Gamut, and Logarithmic Encoding](Digital_Cinema_Color_Management.md#12-gamma-gamut-and-logarithmic-encoding)
+    *   [1.1 Basic Color Science](1.1_Basic_Color_Science.md)
+    *   [1.2 Gamma, Gamut, and Logarithmic Encoding](1.2_Gamma_Gamut_Log.md)
 
 2.  **Camera-Specific Color Science**
-    *   [2.1 ARRI Cameras (ALEXA 35, ALEXA LF)](Digital_Cinema_Color_Management.md#21-arri-cameras-alexa-35-alexa-lf)
-    *   [2.2 Sony Cameras (VENICE, VENICE 2, BURANO)](Digital_Cinema_Color_Management.md#22-sony-cameras-venice-venice-2-burano)
-    *   [2.3 RED Cameras (V-RAPTOR, DSMC2 lineup)](Digital_Cinema_Color_Management.md#23-red-cameras-v-raptor-dsmc2-lineup)
+    *   [2.1 ARRI Cameras (ALEXA 35, ALEXA LF)](2.1_ARRI_Cameras.md)
+    *   [2.2 Sony Cameras (VENICE, VENICE 2, BURANO)](2.2_Sony_Cameras.md)
+    *   [2.3 RED Cameras (V-RAPTOR, DSMC2 lineup)](2.3_RED_Cameras.md)
 
 3.  **Logarithmic & RAW Recording**
-    *   [3.1 Mathematical Breakdown of Log Encodings](Digital_Cinema_Color_Management.md#31-mathematical-breakdown-of-log-encodings)
-    *   [3.2 RAW Capture vs. Log Capture](Digital_Cinema_Color_Management.md#32-raw-capture-vs-log-capture)
-    *   [3.3 Best Practices for Exposing Log and RAW](Digital_Cinema_Color_Management.md#33-best-practices-for-exposing-log-and-raw)
+    *   [3.1 Mathematical Breakdown of Log Encodings](3.1_Log_Encodings.md)
+    *   [3.2 RAW Capture vs. Log Capture](3.2_RAW_vs_Log.md)
+    *   [3.3 Best Practices for Exposing Log and RAW](3.3_Exposing_Log_RAW.md)
 
 4.  **LUTs (Lookup Tables) and Color Transforms**
-    *   [4.1 1D vs. 3D LUTs](Digital_Cinema_Color_Management.md#41-1d-vs-3d-luts)
-    *   [4.2 Technical LUTs vs. Creative LUTs](Digital_Cinema_Color_Management.md#42-technical-luts-vs-creative-luts)
-    *   [4.3 Color Management Pipelines & LUTs](Digital_Cinema_Color_Management.md#43-color-management-pipelines--luts)
-    *   [4.4 Converting to Standardized Color Spaces](Digital_Cinema_Color_Management.md#44-converting-to-standardized-color-spaces)
+    *   [4.1 1D vs. 3D LUTs](4.1_1D_vs_3D_LUTs.md)
+    *   [4.2 Technical LUTs vs. Creative LUTs](4.2_Technical_vs_Creative_LUTs.md)
+    *   [4.3 Color Management Pipelines & LUTs](4.3_Color_Management_Pipelines_LUTs.md)
+    *   [4.4 Converting to Standardized Color Spaces](4.4_Converting_Color_Spaces.md)
 
 5.  **ACES (Academy Color Encoding System)**
-    *   [5.1 ACES Fundamentals](Digital_Cinema_Color_Management.md#51-aces-fundamentals)
-    *   [5.2 ACES vs. Camera-Native Workflows](Digital_Cinema_Color_Management.md#52-aces-vs-camera-native-workflows)
-    *   [5.3 Integrating ACES](Digital_Cinema_Color_Management.md#53-integrating-aces)
+    *   [5.1 ACES Fundamentals](5.1_ACES_Fundamentals.md)
+    *   [5.2 ACES vs. Camera-Native Workflows](5.2_ACES_vs_Camera_Native.md)
+    *   [5.3 Integrating ACES](5.3_Integrating_ACES.md)
 
 6.  **HDR (High Dynamic Range) Workflows**
-    *   [6.1 PQ and HLG Fundamentals](Digital_Cinema_Color_Management.md#61-pq-and-hlg-fundamentals)
-    *   [6.2 HDR Standards and Grading](Digital_Cinema_Color_Management.md#62-hdr-standards-and-grading)
-    *   [6.3 Mapping to HDR](Digital_Cinema_Color_Management.md#63-mapping-to-hdr)
-    *   [6.4 HDR Monitoring](Digital_Cinema_Color_Management.md#64-hdr-monitoring)
+    *   [6.1 PQ and HLG Fundamentals](6.1_PQ_HLG.md)
+    *   [6.2 HDR Standards and Grading](6.2_HDR_Standards_Grading.md)
+    *   [6.3 Mapping to HDR](6.3_Mapping_to_HDR.md)
+    *   [6.4 HDR Monitoring](6.4_HDR_Monitoring.md)
 
 7.  **On-Set Workflows & Live Grading**
-    *   [7.1 Hardware and Software](Digital_Cinema_Color_Management.md#71-hardware-and-software)
-    *   [7.2 Setting up Reference Monitors](Digital_Cinema_Color_Management.md#72-setting-up-reference-monitors)
-    *   [7.3 Wireless Video and Color Accuracy](Digital_Cinema_Color_Management.md#73-wireless-video-and-color-accuracy)
-    *   [7.4 Creating On-Set LUTs/CDLs](Digital_Cinema_Color_Management.md#74-creating-on-set-lutscdls)
-    *   [7.5 Maintaining Color Consistency](Digital_Cinema_Color_Management.md#75-maintaining-color-consistency)
+    *   [7.1 Hardware and Software](7.1_On_Set_Hardware_Software.md)
+    *   [7.2 Setting up Reference Monitors](7.2_Reference_Monitors.md)
+    *   [7.3 Wireless Video and Color Accuracy](7.3_Wireless_Video_Color.md)
+    *   [7.4 Creating On-Set LUTs/CDLs](7.4_On_Set_LUTs_CDLs.md)
+    *   [7.5 Maintaining Color Consistency](7.5_Maintaining_Color_Consistency.md)
 
 8.  **Codecs & Data Management**
-    *   [8.1 Overview of Major Codecs](Digital_Cinema_Color_Management.md#81-overview-of-major-codecs)
-    *   [8.2 Bit-Depth, Chroma Subsampling, and Compression](Digital_Cinema_Color_Management.md#82-bit-depth-chroma-subsampling-and-compression)
-    *   [8.3 Data Rates and Storage](Digital_Cinema_Color_Management.md#83-data-rates-and-storage)
-    *   [8.4 Wrapping Codecs (Container Formats)](Digital_Cinema_Color_Management.md#84-wrapping-codecs-container-formats)
+    *   [8.1 Overview of Major Codecs](8.1_Codecs_Overview.md)
+    *   [8.2 Bit-Depth, Chroma Subsampling, and Compression](8.2_Bit_Depth_Chroma_Compression.md)
+    *   [8.3 Data Rates and Storage](8.3_Data_Rates_Storage.md)
+    *   [8.4 Wrapping Codecs (Container Formats)](8.4_Wrapping_Codecs.md)
 
 9.  **Display & Projection**
-    *   [9.1 Monitoring Differences: On-Set, Post-Production, and Theatrical Projection](Digital_Cinema_Color_Management.md#91-monitoring-differences-on-set-post-production-and-theatrical-projection)
-    *   [9.2 Standardized Color Spaces (Rec. 709, P3, Rec. 2020)](Digital_Cinema_Color_Management.md#92-standardized-color-spaces-rec-709-p3-rec-2020)
-    *   [9.3 Display-Referred vs. Scene-Referred](Digital_Cinema_Color_Management.md#93-display-referred-vs-scene-referred)
-    *   [9.4 Streaming Platforms and DCP](Digital_Cinema_Color_Management.md#94-streaming-platforms-and-dcp)
+    *   [9.1 Monitoring Differences: On-Set, Post-Production, and Theatrical Projection](9.1_Monitoring_Differences.md)
+    *   [9.2 Standardized Color Spaces (Rec. 709, P3, Rec. 2020)](9.2_Standardized_Color_Spaces.md)
+    *   [9.3 Display-Referred vs. Scene-Referred](9.3_Display_Scene_Referred.md)
+    *   [9.4 Streaming Platforms and DCP](9.4_Streaming_DCP.md)
 
 10. **Real-World Workflow Examples**
-    *   [10.1 End-to-End Pipelines (ARRI, Sony, and RED)](Digital_Cinema_Color_Management.md#101-end-to-end-pipelines-arri-sony-and-red)
-    *   [10.2 ACES in Resolve/Baselight](Digital_Cinema_Color_Management.md#102-aces-in-resolvebaselight)
-    *   [10.3 Using On-Set LUTs in Editorial](Digital_Cinema_Color_Management.md#103-using-on-set-luts-in-editorial)
-    *   [10.4 Archival and Versioning](Digital_Cinema_Color_Management.md#104-archival-and-versioning)
+    *   [10.1 End-to-End Pipelines (ARRI, Sony, and RED)](10.1_End_to_End_Pipelines.md)
+    *   [10.2 ACES in Resolve/Baselight](10.2_ACES_Resolve_Baselight.md)
+    *   [10.3 Using On-Set LUTs in Editorial](10.3_On_Set_LUTs_Editorial.md)
+    *   [10.4 Archival and Versioning](10.4_Archival_Versioning.md)
 
 11. **Mathematical Appendix & Diagrams**
-    *   [11.1 Formulas](Digital_Cinema_Color_Management.md#111-formulas)
-    *   [11.2 Charts/Tables](Digital_Cinema_Color_Management.md#112-chartstables)
-    *   [11.3 Block Diagrams](Digital_Cinema_Color_Management.md#113-block-diagrams)
-    *   [11.4 References](Digital_Cinema_Color_Management.md#114-references)
+    *   [11.1 Formulas](11.1_Formulas.md)
+    *   [11.2 Charts/Tables](11.2_Charts_Tables.md)
+    *   [11.3 Block Diagrams](11.3_Block_Diagrams.md)
+    *   [11.4 References](11.4_References.md)
 
 12. **Conclusion & Best Practices**
-    *   [12.1 Summary & Key Concepts for DITs and Colorists](Digital_Cinema_Color_Management.md#121-summary--key-concepts-for-dits-and-colorists)
-    *   [12.2 Camera Comparisons: ARRI vs. Sony vs. RED (Color Science)](Digital_Cinema_Color_Management.md#122-camera-comparisons-arri-vs-sony-vs-red-color-science)
-    *   [12.3 Recommended Practices Checklist](Digital_Cinema_Color_Management.md#123-recommended-practices-checklist)
+    *   [12.1 Summary & Key Concepts for DITs and Colorists](12.1_Summary.md)
+    *   [12.2 Camera Comparisons: ARRI vs. Sony vs. RED (Color Science)](12.2_Camera_Comparisons.md)
+    *   [12.3 Recommended Practices Checklist](12.3_Recommended_Practices.md)
