@@ -22,4 +22,4 @@ Style constraints:
 - Honesty: never invent facts; flag unverifiable details.
 
 Deliverable ending: finish with a production-grade “Best Practices Checklist” for DITs and Colorists (bullet points, actionable, field-ready).
-Take a deep breath and work on this problem step-by-step.
+Take a deep breath and work on this problem step-by-step.w
