@@ -637,4 +637,93 @@ The TOC expansion will be successful if:
 
 ---
 
+## Appendix B: Kierunki rozwojowe (burza mózgów)
+
+1. 
+   - **Tytuł roboczy:** Normalizacja metadanych kamerowych między producentami
+   - **Opis:** Zdefiniowanie wspólnego schematu metadanych (timecode, ISO, WB, T-stop, LUT/CDL) dla ARRI/Sony/RED/Blackmagic. Ułatwia to automatyczne mapowanie do narzędzi editorial i grading bez ręcznej korekty. Zakłada się mapy translacyjne oraz minimalny zestaw pól krytycznych.
+   - **Dlaczego istotne dla high-end:** W produkcjach premium różne kamery i jednostki często współistnieją, a brak spójnego schematu zwiększa ryzyko błędów konformu.
+   - **Jaką lukę rynkową/workflow rozwiązuje:** Brak standardu wymiany metadanych między vendorami i narzędziami post.
+   - **Poziom zaawansowania:** Advanced
+   - **Potencjał rozwoju:** MVP: słownik pól + mapy → tool: walidator i mapper metadanych → platforma/standard: wspólny schemat branżowy.
+2. 
+   - **Tytuł roboczy:** Rejestr decyzji kolorystycznych (LUT/CDL/grades) z wersjonowaniem
+   - **Opis:** Ujednolicony rejestr decyzji kolorystycznych przypisanych do ujęć, scen i wersji montażowych. Umożliwia śledzenie zmian, odtwarzanie poprzednich stanów i automatyczne przenoszenie decyzji między etapami.
+   - **Dlaczego istotne dla high-end:** Złożone show wymagają audytowalnej historii decyzji kolorystycznych, zwłaszcza przy wieloosobowych zespołach i długich harmonogramach.
+   - **Jaką lukę rynkową/workflow rozwiązuje:** Brak spójnego mechanizmu wersjonowania LUT/CDL między DIT, editorial i grading.
+   - **Poziom zaawansowania:** Advanced
+   - **Potencjał rozwoju:** MVP: standard nazewnictwa + rejestr CSV → tool: repozytorium z API → platforma/standard: branżowy registry decyzji kolorystycznych.
+3. 
+   - **Tytuł roboczy:** Spektralne profilowanie LED volume i dopasowanie do kamer
+   - **Opis:** Procedury pomiaru spektralnego LED wall, kalibracji i korelacji z charakterystyką sensorów. Uwzględnia korekty metamerii oraz wpływ spektrum na skintony i kluczowe barwy.
+   - **Dlaczego istotne dla high-end:** Virtual production na poziomie premium wymaga powtarzalnej zgodności koloru między planem a finalnym renderem.
+   - **Jaką lukę rynkową/workflow rozwiązuje:** Niedostateczne narzędzia do korelacji spektralnej LED ↔ kamera w praktyce produkcyjnej.
+   - **Poziom zaawansowania:** Expert
+   - **Potencjał rozwoju:** MVP: checklisty pomiarowe → tool: profilator spektralny z raportem → platforma/standard: procedura certyfikacji LED volume.
+4. 
+   - **Tytuł roboczy:** Automatyczny QC dla dual-master HDR/SDR
+   - **Opis:** System weryfikacji zgodności wersji HDR i SDR z użyciem metryk percepcyjnych (ΔEITP/ΔEJz) oraz testów tone mappingu. Wyniki raportowane per-sekwencja z progami akceptacji.
+   - **Dlaczego istotne dla high-end:** Dla premium deliverables wymagane są powtarzalne, audytowalne kryteria jakości.
+   - **Jaką lukę rynkową/workflow rozwiązuje:** Brak obiektywnego, zautomatyzowanego QC dla wersji HDR/SDR w pipeline.
+   - **Poziom zaawansowania:** Expert
+   - **Potencjał rozwoju:** MVP: zestaw testów i progów → tool: automatyczny QC z raportem → platforma/standard: wspólny benchmark zgodności HDR/SDR.
+5. 
+   - **Tytuł roboczy:** Kontrola integralności danych od planu do archiwum
+   - **Opis:** Wprowadzenie jednoznacznego łańcucha kontroli (checksum, manifesty, podpisy) dla materiału kamerowego i transkodów. System raportuje braki, uszkodzenia i niezgodności podczas każdego transferu.
+   - **Dlaczego istotne dla high-end:** Utrata lub uszkodzenie danych w wysokobudżetowych projektach generuje kosztowne przeróbki i ryzyko prawne.
+   - **Jaką lukę rynkową/workflow rozwiązuje:** Rozproszone i niestandardowe praktyki weryfikacji integralności danych.
+   - **Poziom zaawansowania:** Pro
+   - **Potencjał rozwoju:** MVP: checklisty i skrypty checksum → tool: konsola weryfikacji transferów → platforma/standard: jednolity łańcuch custody dla postprodukcji.
+6. 
+   - **Tytuł roboczy:** Modelowanie przepustowości danych dla 8K/12K
+   - **Opis:** Metody prognozowania obciążenia sieci, storage i CPU/GPU w zależności od kodeków i rozdzielczości. Pozwala to projektować pipeline bez wąskich gardeł i planować inwestycje.
+   - **Dlaczego istotne dla high-end:** Produkcje premium pracują na wysokich bitratach, a brak planowania przepustowości generuje przestoje.
+   - **Jaką lukę rynkową/workflow rozwiązuje:** Brak ujednoliconego modelu kosztu danych i przepustowości dla kinowych formatów.
+   - **Poziom zaawansowania:** Advanced
+   - **Potencjał rozwoju:** MVP: kalkulator w arkuszu → tool: symulator pipeline → platforma/standard: planowanie zasobów dla facility.
+7. 
+   - **Tytuł roboczy:** Spójny pipeline dostaw IMF/DCP/streaming
+   - **Opis:** Moduł opisujący jeden model danych dla równoległych deliverables, z kontrolą transformat i metadanych. Zakłada mapowanie wspólnego mastera na różne specyfikacje odbiorców.
+   - **Dlaczego istotne dla high-end:** Duże projekty wymagają równoległych dostaw do kin i platform, bez rozjechania intencji twórczej.
+   - **Jaką lukę rynkową/workflow rozwiązuje:** Rozdzielne, niespójne procesy dostaw dla IMF, DCP i streaming.
+   - **Poziom zaawansowania:** Advanced
+   - **Potencjał rozwoju:** MVP: macierz wymagań deliverables → tool: generator pakietów z walidacją → platforma/standard: wspólna specyfikacja produkcyjna.
+8. 
+   - **Tytuł roboczy:** Round-trip VFX z kontrolą koloru i metadanych
+   - **Opis:** Procedury wymiany materiałów między postprodukcyjnym gradingiem a VFX z pełnym śledzeniem ACES i metadanych. Obejmuje walidację przestrzeni barwnej, kluczowych atrybutów i wersji.
+   - **Dlaczego istotne dla high-end:** Projekty VFX-heavy wymagają precyzyjnego zachowania referencji kolorystycznych.
+   - **Jaką lukę rynkową/workflow rozwiązuje:** Brak spójnych zasad round-trip VFX z perspektywy color management.
+   - **Poziom zaawansowania:** Expert
+   - **Potencjał rozwoju:** MVP: checklista wymiany → tool: walidator paczek VFX → platforma/standard: standard wymiany dla facility i vendorów.
+9. 
+   - **Tytuł roboczy:** Predykcja ryzyka bandingu i artefaktów kompresji w HDR
+   - **Opis:** Analiza materiału pod kątem wrażliwych gradientów i zakresów luminancji dla wybranych kodeków. Wynikiem są rekomendacje ustawień kodowania oraz alerty dla sekcji krytycznych.
+   - **Dlaczego istotne dla high-end:** Jakość HDR w dystrybucji premium jest szczególnie podatna na degradację w cieniach i średnich tonach.
+   - **Jaką lukę rynkową/workflow rozwiązuje:** Brak narzędzi predykcyjnych dla artefaktów HDR w procesie masteringu.
+   - **Poziom zaawansowania:** Advanced
+   - **Potencjał rozwoju:** MVP: heurystyki i checklisty → tool: analizator ryzyka → platforma/standard: wspólny benchmark ryzyka kompresji.
+10. 
+   - **Tytuł roboczy:** KPI spójności kolorystycznej między etapami produkcji
+   - **Opis:** Zestaw mierników spójności barwnej pomiędzy planem, dailies, offline i gradingiem finalnym. Raporty per etap wskazują odchylenia i ich źródło.
+   - **Dlaczego istotne dla high-end:** Ułatwia zarządzanie jakością i minimalizuje kosztowne iteracje kreatywne.
+   - **Jaką lukę rynkową/workflow rozwiązuje:** Brak metryk pozwalających obiektywnie ocenić spójność koloru w pipeline.
+   - **Poziom zaawansowania:** Pro
+   - **Potencjał rozwoju:** MVP: podstawowy zestaw KPI → tool: panel raportowy → platforma/standard: branżowy standard raportowania.
+11. 
+   - **Tytuł roboczy:** Automatyzacja dailies z kontrolą tone mappingu i gamut mappingu
+   - **Opis:** Standardowe presety dla dailies z kontrolą transformacji dla różnych docelowych przestrzeni i monitorów. Uwzględnia alerty dla przekroczeń gamutowych oraz spójność z finalnym gradingiem.
+   - **Dlaczego istotne dla high-end:** Dailies muszą odzwierciedlać intencję kreatywną bez zafałszowań wynikających z automatycznych transformacji.
+   - **Jaką lukę rynkową/workflow rozwiązuje:** Brak kontrolowanych, powtarzalnych ustawień dailies dla wielu odbiorców.
+   - **Poziom zaawansowania:** Advanced
+   - **Potencjał rozwoju:** MVP: zestaw presetów i reguł → tool: automatyczny generator dailies → platforma/standard: biblioteka referencyjna dla facility.
+12. 
+   - **Tytuł roboczy:** Benchmarking monitorów i projektorów HDR/SDR w realnych warunkach
+   - **Opis:** Metodyka porównawcza urządzeń referencyjnych i klienckich, uwzględniająca stabilność, dryft i zgodność z docelową krzywą. Raporty porównawcze wspierają decyzje zakupowe i walidację.
+   - **Dlaczego istotne dla high-end:** Dobór monitorów referencyjnych determinuje wiarygodność całego procesu kolorystycznego.
+   - **Jaką lukę rynkową/workflow rozwiązuje:** Brak praktycznych benchmarków obejmujących realne warunki pracy i długoterminową stabilność.
+   - **Poziom zaawansowania:** Pro
+   - **Potencjał rozwoju:** MVP: metodologia pomiarów → tool: zestaw testów i raportów → platforma/standard: baza benchmarków branżowych.
+
+---
+
 **END OF PROPOSAL**
