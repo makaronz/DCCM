@@ -637,92 +637,92 @@ The TOC expansion will be successful if:
 
 ---
 
-## Appendix B: Kierunki rozwojowe (burza mózgów)
+## Appendix B: Development Directions (Brainstorm)
 
-1. **Normalizacja metadanych kamerowych między producentami**
-   - **Tytuł roboczy:** Normalizacja metadanych kamerowych między producentami
-   - **Opis:** Zdefiniowanie wspólnego schematu metadanych (timecode, ISO, WB, T-stop, LUT/CDL) dla ARRI/Sony/RED/Blackmagic. Ułatwia to automatyczne mapowanie do narzędzi edytorskich i gradingowych bez ręcznej korekty. Zakłada się mapy translacyjne oraz minimalny zestaw pól krytycznych.
-   - **Dlaczego istotne dla high-end:** W produkcjach premium różne kamery i jednostki często współistnieją, a brak spójnego schematu zwiększa ryzyko błędów konformu.
-   - **Jaką lukę rynkową/workflow rozwiązuje:** Brak standardu wymiany metadanych między vendorami i narzędziami post.
-   - **Poziom zaawansowania:** Advanced
-   - **Potencjał rozwoju:** MVP: słownik pól + mapy → tool: walidator i mapper metadanych → platforma/standard: wspólny schemat branżowy.
-2. **Rejestr decyzji kolorystycznych (LUT/CDL/grades) z wersjonowaniem**
-   - **Tytuł roboczy:** Rejestr decyzji kolorystycznych (LUT/CDL/grades) z wersjonowaniem
-   - **Opis:** Ujednolicony rejestr decyzji kolorystycznych przypisanych do ujęć, scen i wersji montażowych. Umożliwia śledzenie zmian, odtwarzanie poprzednich stanów i automatyczne przenoszenie decyzji między etapami.
-   - **Dlaczego istotne dla high-end:** Złożone show wymagają audytowalnej historii decyzji kolorystycznych, zwłaszcza przy wieloosobowych zespołach i długich harmonogramach.
-   - **Jaką lukę rynkową/workflow rozwiązuje:** Brak spójnego mechanizmu wersjonowania LUT/CDL między DIT, editorial i grading.
-   - **Poziom zaawansowania:** Advanced
-   - **Potencjał rozwoju:** MVP: standard nazewnictwa + rejestr CSV → tool: repozytorium z API → platforma/standard: branżowy rejestr decyzji kolorystycznych.
-3. **Spektralne profilowanie LED volume i dopasowanie do kamer**
-   - **Tytuł roboczy:** Spektralne profilowanie LED volume i dopasowanie do kamer
-   - **Opis:** Procedury pomiaru spektralnego LED wall, kalibracji i korelacji z charakterystyką sensorów. Uwzględnia korekty metamerii oraz wpływ spektrum na skintony i kluczowe barwy.
-   - **Dlaczego istotne dla high-end:** Virtual production na poziomie premium wymaga powtarzalnej zgodności koloru między planem a finalnym renderem.
-   - **Jaką lukę rynkową/workflow rozwiązuje:** Niedostateczne narzędzia do korelacji spektralnej LED ↔ kamera w praktyce produkcyjnej.
-   - **Poziom zaawansowania:** Expert
-   - **Potencjał rozwoju:** MVP: checklisty pomiarowe → tool: profilator spektralny z raportem → platforma/standard: procedura certyfikacji LED volume.
-4. **Automatyczny QC dla dual-master HDR/SDR**
-   - **Tytuł roboczy:** Automatyczny QC dla dual-master HDR/SDR
-   - **Opis:** System weryfikacji zgodności wersji HDR i SDR z użyciem metryk percepcyjnych (ΔEITP/ΔEJz) oraz testów tone mappingu. Wyniki raportowane per-sekwencja z progami akceptacji.
-   - **Dlaczego istotne dla high-end:** Dla premium deliverables wymagane są powtarzalne, audytowalne kryteria jakości.
-   - **Jaką lukę rynkową/workflow rozwiązuje:** Brak obiektywnego, zautomatyzowanego QC dla wersji HDR/SDR w pipeline.
-   - **Poziom zaawansowania:** Expert
-   - **Potencjał rozwoju:** MVP: zestaw testów i progów → tool: automatyczny QC z raportem → platforma/standard: wspólny benchmark zgodności HDR/SDR.
-5. **Kontrola integralności danych od planu do archiwum**
-   - **Tytuł roboczy:** Kontrola integralności danych od planu do archiwum
-   - **Opis:** Wprowadzenie jednoznacznego łańcucha kontroli (checksum, manifesty, podpisy) dla materiału kamerowego i transkodów. System raportuje braki, uszkodzenia i niezgodności podczas każdego transferu.
-   - **Dlaczego istotne dla high-end:** Utrata lub uszkodzenie danych w wysokobudżetowych projektach generuje kosztowne przeróbki i ryzyko prawne.
-   - **Jaką lukę rynkową/workflow rozwiązuje:** Rozproszone i niestandardowe praktyki weryfikacji integralności danych.
-   - **Poziom zaawansowania:** Pro
-   - **Potencjał rozwoju:** MVP: checklisty i skrypty checksum → tool: konsola weryfikacji transferów → platforma/standard: jednolity łańcuch custody dla postprodukcji.
-6. **Modelowanie przepustowości danych dla 8K/12K**
-   - **Tytuł roboczy:** Modelowanie przepustowości danych dla 8K/12K
-   - **Opis:** Metody prognozowania obciążenia sieci, storage i CPU/GPU w zależności od kodeków i rozdzielczości. Pozwala to projektować pipeline bez wąskich gardeł i planować inwestycje.
-   - **Dlaczego istotne dla high-end:** Produkcje premium pracują na wysokich bitratach, a brak planowania przepustowości generuje przestoje.
-   - **Jaką lukę rynkową/workflow rozwiązuje:** Brak ujednoliconego modelu kosztu danych i przepustowości dla kinowych formatów.
-   - **Poziom zaawansowania:** Advanced
-   - **Potencjał rozwoju:** MVP: kalkulator w arkuszu → tool: symulator pipeline → platforma/standard: planowanie zasobów dla facility.
-7. **Spójny pipeline dostaw IMF/DCP/streaming**
-   - **Tytuł roboczy:** Spójny pipeline dostaw IMF/DCP/streaming
-   - **Opis:** Moduł opisujący jeden model danych dla równoległych deliverables, z kontrolą transformat i metadanych. Zakłada mapowanie wspólnego mastera na różne specyfikacje odbiorców.
-   - **Dlaczego istotne dla high-end:** Duże projekty wymagają równoległych dostaw do kin i platform, bez rozjechania intencji twórczej.
-   - **Jaką lukę rynkową/workflow rozwiązuje:** Rozdzielne, niespójne procesy dostaw dla IMF, DCP i streaming.
-   - **Poziom zaawansowania:** Advanced
-   - **Potencjał rozwoju:** MVP: macierz wymagań deliverables → tool: generator pakietów z walidacją → platforma/standard: wspólna specyfikacja produkcyjna.
-8. **Round-trip VFX z kontrolą koloru i metadanych**
-   - **Tytuł roboczy:** Round-trip VFX z kontrolą koloru i metadanych
-   - **Opis:** Procedury wymiany materiałów między postprodukcyjnym gradingiem a VFX z pełnym śledzeniem ACES i metadanych. Obejmuje walidację przestrzeni barwnej, kluczowych atrybutów i wersji.
-   - **Dlaczego istotne dla high-end:** Projekty VFX-heavy wymagają precyzyjnego zachowania referencji kolorystycznych.
-   - **Jaką lukę rynkową/workflow rozwiązuje:** Brak spójnych zasad round-trip VFX z perspektywy color management.
-   - **Poziom zaawansowania:** Expert
-   - **Potencjał rozwoju:** MVP: checklista wymiany → tool: walidator paczek VFX → platforma/standard: standard wymiany dla facility i vendorów.
-9. **Predykcja ryzyka bandingu i artefaktów kompresji w HDR**
-   - **Tytuł roboczy:** Predykcja ryzyka bandingu i artefaktów kompresji w HDR
-   - **Opis:** Analiza materiału pod kątem wrażliwych gradientów i zakresów luminancji dla wybranych kodeków. Wynikiem są rekomendacje ustawień kodowania oraz alerty dla sekcji krytycznych.
-   - **Dlaczego istotne dla high-end:** Jakość HDR w dystrybucji premium jest szczególnie podatna na degradację w cieniach i średnich tonach.
-   - **Jaką lukę rynkową/workflow rozwiązuje:** Brak narzędzi predykcyjnych dla artefaktów HDR w procesie masteringu.
-   - **Poziom zaawansowania:** Advanced
-   - **Potencjał rozwoju:** MVP: heurystyki i checklisty → tool: analizator ryzyka → platforma/standard: wspólny benchmark ryzyka kompresji.
-10. **KPI spójności kolorystycznej między etapami produkcji**
-   - **Tytuł roboczy:** KPI spójności kolorystycznej między etapami produkcji
-   - **Opis:** Zestaw mierników spójności barwnej pomiędzy planem, dailies, offline i gradingiem finalnym. Raporty per etap wskazują odchylenia i ich źródło.
-   - **Dlaczego istotne dla high-end:** Ułatwia zarządzanie jakością i minimalizuje kosztowne iteracje kreatywne.
-   - **Jaką lukę rynkową/workflow rozwiązuje:** Brak metryk pozwalających obiektywnie ocenić spójność koloru w pipeline.
-   - **Poziom zaawansowania:** Pro
-   - **Potencjał rozwoju:** MVP: podstawowy zestaw KPI → tool: panel raportowy → platforma/standard: branżowy standard raportowania.
-11. **Automatyzacja dailies z kontrolą tone mappingu i gamut mappingu**
-   - **Tytuł roboczy:** Automatyzacja dailies z kontrolą tone mappingu i gamut mappingu
-   - **Opis:** Standardowe presety dla dailies z kontrolą transformacji dla różnych docelowych przestrzeni i monitorów. Uwzględnia alerty dla przekroczeń gamutowych oraz spójność z finalnym gradingiem.
-   - **Dlaczego istotne dla high-end:** Dailies muszą odzwierciedlać intencję kreatywną bez zafałszowań wynikających z automatycznych transformacji.
-   - **Jaką lukę rynkową/workflow rozwiązuje:** Brak kontrolowanych, powtarzalnych ustawień dailies dla wielu odbiorców.
-   - **Poziom zaawansowania:** Advanced
-   - **Potencjał rozwoju:** MVP: zestaw presetów i reguł → tool: automatyczny generator dailies → platforma/standard: biblioteka referencyjna dla facility.
-12. **Benchmarking monitorów i projektorów HDR/SDR w realnych warunkach**
-   - **Tytuł roboczy:** Benchmarking monitorów i projektorów HDR/SDR w realnych warunkach
-   - **Opis:** Metodyka porównawcza urządzeń referencyjnych i klienckich, uwzględniająca stabilność, dryft i zgodność z docelową krzywą. Raporty porównawcze wspierają decyzje zakupowe i walidację.
-   - **Dlaczego istotne dla high-end:** Dobór monitorów referencyjnych determinuje wiarygodność całego procesu kolorystycznego.
-   - **Jaką lukę rynkową/workflow rozwiązuje:** Brak praktycznych benchmarków obejmujących realne warunki pracy i długoterminową stabilność.
-   - **Poziom zaawansowania:** Pro
-   - **Potencjał rozwoju:** MVP: metodologia pomiarów → tool: zestaw testów i raportów → platforma/standard: baza benchmarków branżowych.
+1. **Camera metadata normalization across manufacturers**
+   - **Working title:** Camera metadata normalization across manufacturers
+   - **Description:** Define a shared metadata schema (timecode, ISO, WB, T-stop, LUT/CDL) for ARRI/Sony/RED/Blackmagic. This enables automatic mapping to editorial and grading tools without manual fixes. Assumes translation maps and a minimal set of critical fields.
+   - **Why it matters for high-end:** Premium productions often mix cameras and units; lack of a unified schema increases conform error risk.
+   - **Market/workflow gap addressed:** No standard for metadata exchange between vendors and post tools.
+   - **Expertise level:** Advanced
+   - **Growth potential:** MVP: field dictionary + mappings → tool: metadata validator and mapper → platform/standard: shared industry schema.
+2. **Versioned registry of color decisions (LUT/CDL/grades)**
+   - **Working title:** Versioned registry of color decisions (LUT/CDL/grades)
+   - **Description:** A unified registry of color decisions tied to shots, scenes, and editorial versions. Enables change tracking, rollback, and automated propagation of decisions between stages.
+   - **Why it matters for high-end:** Complex shows require an auditable history of color decisions, especially with multi-person teams and long schedules.
+   - **Market/workflow gap addressed:** No consistent versioning mechanism for LUT/CDL between DIT, editorial, and grading.
+   - **Expertise level:** Advanced
+   - **Growth potential:** MVP: naming standard + CSV registry → tool: repository with API → platform/standard: industry color-decision registry.
+3. **Spectral profiling of LED volumes and camera matching**
+   - **Working title:** Spectral profiling of LED volumes and camera matching
+   - **Description:** Procedures for spectral measurement of LED walls, calibration, and correlation with sensor characteristics. Includes metamerism corrections and spectral impact on skin tones and key colors.
+   - **Why it matters for high-end:** Premium virtual production requires repeatable color alignment between set capture and final render.
+   - **Market/workflow gap addressed:** Insufficient tools for practical LED-to-camera spectral correlation.
+   - **Expertise level:** Expert
+   - **Growth potential:** MVP: measurement checklists → tool: spectral profiler with report → platform/standard: LED volume certification procedure.
+4. **Automated QC for dual-master HDR/SDR**
+   - **Working title:** Automated QC for dual-master HDR/SDR
+   - **Description:** A system to verify alignment between HDR and SDR versions using perceptual metrics (ΔEITP/ΔEJz) and tone-mapping tests. Results are reported per sequence with acceptance thresholds.
+   - **Why it matters for high-end:** Premium deliverables require repeatable, auditable quality criteria.
+   - **Market/workflow gap addressed:** No objective, automated QC for HDR/SDR versions in the pipeline.
+   - **Expertise level:** Expert
+   - **Growth potential:** MVP: test suite and thresholds → tool: automated QC with report → platform/standard: shared HDR/SDR conformity benchmark.
+5. **Data integrity control from set to archive**
+   - **Working title:** Data integrity control from set to archive
+   - **Description:** Introduce a clear chain of custody (checksums, manifests, signatures) for camera originals and transcodes. The system reports missing, corrupted, or inconsistent data at each transfer.
+   - **Why it matters for high-end:** Data loss or corruption in high-budget projects drives costly rework and legal risk.
+   - **Market/workflow gap addressed:** Fragmented and non-standard data integrity verification practices.
+   - **Expertise level:** Pro
+   - **Growth potential:** MVP: checklists and checksum scripts → tool: transfer verification console → platform/standard: unified postproduction chain of custody.
+6. **Data throughput modeling for 8K/12K**
+   - **Working title:** Data throughput modeling for 8K/12K
+   - **Description:** Methods to forecast network, storage, and CPU/GPU load based on codecs and resolution. Enables pipeline design without bottlenecks and supports investment planning.
+   - **Why it matters for high-end:** Premium productions run high bitrates; lack of throughput planning creates downtime.
+   - **Market/workflow gap addressed:** No standardized model of data cost and throughput for cinema formats.
+   - **Expertise level:** Advanced
+   - **Growth potential:** MVP: spreadsheet calculator → tool: pipeline simulator → platform/standard: facility resource planning model.
+7. **Unified delivery pipeline for IMF/DCP/streaming**
+   - **Working title:** Unified delivery pipeline for IMF/DCP/streaming
+   - **Description:** A module describing a single data model for parallel deliverables with transform and metadata control. Assumes mapping from a common master to recipient-specific specifications.
+   - **Why it matters for high-end:** Large projects require parallel theatrical and platform deliveries without creative drift.
+   - **Market/workflow gap addressed:** Separate, inconsistent delivery processes for IMF, DCP, and streaming.
+   - **Expertise level:** Advanced
+   - **Growth potential:** MVP: deliverables requirements matrix → tool: package generator with validation → platform/standard: shared production specification.
+8. **Round-trip VFX with color and metadata control**
+   - **Working title:** Round-trip VFX with color and metadata control
+   - **Description:** Procedures for exchanging assets between grading and VFX with full ACES and metadata tracking. Includes validation of color space, key attributes, and versions.
+   - **Why it matters for high-end:** VFX-heavy projects require precise preservation of color references.
+   - **Market/workflow gap addressed:** No consistent VFX round-trip rules from a color management perspective.
+   - **Expertise level:** Expert
+   - **Growth potential:** MVP: exchange checklist → tool: VFX package validator → platform/standard: facility/vendor exchange standard.
+9. **Predicting banding and compression artifact risk in HDR**
+   - **Working title:** Predicting banding and compression artifact risk in HDR
+   - **Description:** Analyze material for sensitive gradients and luminance ranges across selected codecs. The output recommends encoding settings and flags critical sections.
+   - **Why it matters for high-end:** Premium HDR distribution is especially vulnerable to degradation in shadows and midtones.
+   - **Market/workflow gap addressed:** No predictive tooling for HDR artifacts in the mastering process.
+   - **Expertise level:** Advanced
+   - **Growth potential:** MVP: heuristics and checklists → tool: risk analyzer → platform/standard: shared compression risk benchmark.
+10. **Color consistency KPIs across production stages**
+   - **Working title:** Color consistency KPIs across production stages
+   - **Description:** A set of color consistency metrics between set, dailies, offline, and final grading. Stage-level reports highlight deviations and their sources.
+   - **Why it matters for high-end:** Supports quality management and reduces costly creative iterations.
+   - **Market/workflow gap addressed:** No metrics to objectively assess color consistency in the pipeline.
+   - **Expertise level:** Pro
+   - **Growth potential:** MVP: baseline KPI set → tool: reporting dashboard → platform/standard: industry reporting standard.
+11. **Dailies automation with tone-mapping and gamut-mapping control**
+   - **Working title:** Dailies automation with tone-mapping and gamut-mapping control
+   - **Description:** Standard presets for dailies with transform control for different target spaces and monitors. Includes out-of-gamut alerts and alignment with final grading.
+   - **Why it matters for high-end:** Dailies must reflect creative intent without distortions from automated transforms.
+   - **Market/workflow gap addressed:** No controlled, repeatable dailies settings for multiple audiences.
+   - **Expertise level:** Advanced
+   - **Growth potential:** MVP: preset and rule set → tool: automated dailies generator → platform/standard: facility reference library.
+12. **Benchmarking HDR/SDR monitors and projectors in real-world conditions**
+   - **Working title:** Benchmarking HDR/SDR monitors and projectors in real-world conditions
+   - **Description:** A comparative methodology for reference and client devices, considering stability, drift, and target-curve compliance. Comparative reports support purchasing decisions and validation.
+   - **Why it matters for high-end:** Reference monitor selection determines the credibility of the entire color process.
+   - **Market/workflow gap addressed:** No practical benchmarks covering real-world conditions and long-term stability.
+   - **Expertise level:** Pro
+   - **Growth potential:** MVP: measurement methodology → tool: test suite and reports → platform/standard: industry benchmark database.
 
 ---
 
