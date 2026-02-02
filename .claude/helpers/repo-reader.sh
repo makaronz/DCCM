@@ -20,7 +20,7 @@ echo ""
 # Repository info
 echo -e "${BLUE}Repository Information:${NC}"
 echo "  Path: $REPO_ROOT"
-echo "  Name: $(basename $REPO_ROOT)"
+echo "  Name: $(basename "$REPO_ROOT")"
 
 # Git info
 if [ -d "$REPO_ROOT/.git" ]; then
@@ -52,7 +52,7 @@ echo ""
 
 # Directory structure
 echo -e "${BLUE}Top-Level Structure:${NC}"
-ls -1 "$REPO_ROOT" | head -20 | while read item; do
+ls -1 "$REPO_ROOT" | head -20 | while read -r item; do
     if [ -d "$REPO_ROOT/$item" ]; then
         COUNT=$(find "$REPO_ROOT/$item" -type f -not -path '*/.git/*' 2>/dev/null | wc -l)
         echo "  [dir]  $item/ ($COUNT files)"
@@ -81,7 +81,7 @@ fi
 
 # Recent activity
 echo -e "${BLUE}Recent Activity (last 5 commits):${NC}"
-git log --oneline -5 2>/dev/null | while read line; do
+git log --oneline -5 2>/dev/null | while read -r line; do
     echo "  $line"
 done
 echo ""
