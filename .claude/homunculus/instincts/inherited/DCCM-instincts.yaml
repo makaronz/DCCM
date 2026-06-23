@@ -1,0 +1,348 @@
+# Instincts generated from https://github.com/makaronz/DCCM
+# Generated: 2026-06-17T12:50:05.007Z
+# Version: 2.0
+# NOTE: This file supplements (does not replace) any existing curated instincts.
+# High-confidence manually curated instincts should be preserved alongside these.
+
+---
+id: DCCM-commit-length
+trigger: "when writing a commit message"
+confidence: 0.6
+domain: git
+source: repo-analysis
+source_repo: https://github.com/makaronz/DCCM
+---
+
+# DCCM Commit Length
+
+## Action
+
+Write moderate-length commit messages (~61 characters)
+
+## Evidence
+
+- Average commit message length: 61 chars
+- Based on 16 commits
+
+---
+id: DCCM-naming-files
+trigger: "when creating a new file"
+confidence: 0.8
+domain: code-style
+source: repo-analysis
+source_repo: https://github.com/makaronz/DCCM
+---
+
+# DCCM Naming Files
+
+## Action
+
+Use PascalCase naming convention
+
+## Evidence
+
+- Analyzed file naming patterns in repository
+- Dominant pattern: PascalCase
+
+---
+id: DCCM-import-relative
+trigger: "when importing modules"
+confidence: 0.75
+domain: code-style
+source: repo-analysis
+source_repo: https://github.com/makaronz/DCCM
+---
+
+# DCCM Import Relative
+
+## Action
+
+Use relative imports for project files
+
+## Evidence
+
+- Import analysis shows relative import pattern
+- Example: import { x } from '../lib/x'
+
+---
+id: DCCM-export-style
+trigger: "when exporting from a module"
+confidence: 0.7
+domain: code-style
+source: repo-analysis
+source_repo: https://github.com/makaronz/DCCM
+---
+
+# DCCM Export Style
+
+## Action
+
+Prefer named exports
+
+## Evidence
+
+- Export pattern analysis
+- Dominant style: named
+
+---
+id: DCCM-test-separate
+trigger: "when writing tests"
+confidence: 0.8
+domain: testing
+source: repo-analysis
+source_repo: https://github.com/makaronz/DCCM
+---
+
+# DCCM Test Separate
+
+## Action
+
+Place tests in the tests/ or __tests__/ directory, mirroring src structure
+
+## Evidence
+
+- Separate test directory pattern detected
+- Tests live in dedicated test folders
+
+---
+id: DCCM-workflow-update-existing-chapter-markdown
+trigger: "when doing update existing chapter markdown"
+confidence: 0.9
+domain: workflow
+source: repo-analysis
+source_repo: https://github.com/makaronz/DCCM
+---
+
+# DCCM Workflow Update Existing Chapter Markdown
+
+## Action
+
+Follow the update-existing-chapter-markdown workflow:
+1. Identify the chapter to update.
+2. Edit the corresponding .md file (e.g., 2.1_ARRI_Cameras.md) with new or revised content.
+3. Commit the changes with a message indicating the chapter and nature of the update.
+
+## Evidence
+
+- Workflow detected from commit patterns
+- Frequency: ~10x per month
+- Files: *.md
+
+---
+id: DCCM-workflow-add-new-chapter-markdown
+trigger: "when doing add new chapter markdown"
+confidence: 0.6
+domain: workflow
+source: repo-analysis
+source_repo: https://github.com/makaronz/DCCM
+---
+
+# DCCM Workflow Add New Chapter Markdown
+
+## Action
+
+Follow the add-new-chapter-markdown workflow:
+1. Determine the new chapter or topic to add.
+2. Create a new .md file following the naming convention (e.g., 13.0_AI_ML_Color_Management.md).
+3. Write the initial content for the new chapter.
+4. Commit the new file with a message indicating the addition.
+
+## Evidence
+
+- Workflow detected from commit patterns
+- Frequency: ~2x per month
+- Files: *.md
+
+---
+id: dccm-instinct-file-naming
+trigger: "When creating or renaming a file in the codebase"
+confidence: 0.9
+domain: code-style
+source: repo-analysis
+source_repo: makaronz/DCCM
+---
+
+# Dccm Instinct File Naming
+
+## Action
+
+Use PascalCase for file names
+
+## Evidence
+
+- Pattern in codeStyle.namingConventions.files
+- Examples in commit messages: 2.1_ARRI_Cameras.md, 6.2_HDR_Standards_Grading.md
+
+---
+id: dccm-instinct-function-naming
+trigger: "When defining a function"
+confidence: 0.9
+domain: code-style
+source: repo-analysis
+source_repo: makaronz/DCCM
+---
+
+# Dccm Instinct Function Naming
+
+## Action
+
+Use camelCase for function names
+
+## Evidence
+
+- Pattern in codeStyle.namingConventions.functions
+
+---
+id: dccm-instinct-class-naming
+trigger: "When defining a class"
+confidence: 0.9
+domain: code-style
+source: repo-analysis
+source_repo: makaronz/DCCM
+---
+
+# Dccm Instinct Class Naming
+
+## Action
+
+Use PascalCase for class names
+
+## Evidence
+
+- Pattern in codeStyle.namingConventions.classes
+
+---
+id: dccm-instinct-constant-naming
+trigger: "When defining a constant"
+confidence: 0.9
+domain: code-style
+source: repo-analysis
+source_repo: makaronz/DCCM
+---
+
+# Dccm Instinct Constant Naming
+
+## Action
+
+Use SCREAMING_SNAKE_CASE for constant names
+
+## Evidence
+
+- Pattern in codeStyle.namingConventions.constants
+
+---
+id: dccm-instinct-import-style
+trigger: "When importing modules"
+confidence: 0.9
+domain: code-style
+source: repo-analysis
+source_repo: makaronz/DCCM
+---
+
+# Dccm Instinct Import Style
+
+## Action
+
+Use relative import paths
+
+## Evidence
+
+- Pattern in codeStyle.importStyle
+
+---
+id: dccm-instinct-export-style
+trigger: "When exporting modules or functions"
+confidence: 0.9
+domain: code-style
+source: repo-analysis
+source_repo: makaronz/DCCM
+---
+
+# Dccm Instinct Export Style
+
+## Action
+
+Use named exports
+
+## Evidence
+
+- Pattern in codeStyle.exportStyle
+
+---
+id: dccm-instinct-test-location
+trigger: "When adding or updating tests"
+confidence: 0.8
+domain: testing
+source: repo-analysis
+source_repo: makaronz/DCCM
+---
+
+# Dccm Instinct Test Location
+
+## Action
+
+Place test files in a separate directory from source files
+
+## Evidence
+
+- Pattern in architecture.folderStructure.testLocation: 'separate'
+
+---
+id: dccm-instinct-commit-format
+trigger: "When writing a commit message"
+confidence: 0.9
+domain: git
+source: repo-analysis
+source_repo: makaronz/DCCM
+---
+
+# Dccm Instinct Commit Format
+
+## Action
+
+Use the format: 'DCCM Modernization [Month Year]: Update [chapter]_[topic].md'
+
+## Evidence
+
+- Seen in commit examples: 'DCCM Modernization June 2026: Update 2.1_ARRI_Cameras.md'
+
+---
+id: dccm-instinct-update-chapter
+trigger: "When someone wants to revise, expand, or modernize the content of an existing DCCM chapter"
+confidence: 0.95
+domain: workflow
+source: repo-analysis
+source_repo: makaronz/DCCM
+---
+
+# Dccm Instinct Update Chapter
+
+## Action
+
+Edit the corresponding .md file and commit the changes with a message indicating the chapter and nature of the update
+
+## Evidence
+
+- Workflow: update-existing-chapter-markdown
+- Commit examples: 'DCCM Modernization June 2026: Update 2.1_ARRI_Cameras.md'
+
+---
+id: dccm-instinct-add-chapter
+trigger: "When someone wants to introduce a new topic or section to the DCCM documentation"
+confidence: 0.9
+domain: workflow
+source: repo-analysis
+source_repo: makaronz/DCCM
+---
+
+# Dccm Instinct Add Chapter
+
+## Action
+
+Create a new .md file following the naming convention, write initial content, and commit with a message indicating the addition
+
+## Evidence
+
+- Workflow: add-new-chapter-markdown
+- Commit example: 'DCCM Modernization June 2026: Update 13.0_AI_ML_Color_Management.md'
+
