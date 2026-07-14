@@ -102,6 +102,9 @@ DCCM covers the full pipeline: camera color science, log/RAW encoding, LUTs, ACE
 ### 14. Sustainability and Green Production
 - [14.0 Sustainability & Green Production](14.0_Sustainability_Green_Production.md) — The carbon footprint of post-production, energy-efficient codecs, cloud rendering carbon optimization, and the 14-item DIT sustainability checklist. Because 500 TB of RAW has a cost beyond the hard drive.
 
+### Verified reference code
+- [`curves.py`](curves.py) — a single-file, numpy-only implementation of the transfer functions (LogC3/LogC4, S-Log3, Log3G10, V-Log, Canon Log 2, Rec.709, sRGB, PQ, HLG, ACEScc/ACEScct/ACESproxy) and camera→Rec.709 gamut matrices. **Every constant is verified against the official specs** — run `python curves.py` to self-test each curve's 18% mid-grey value, round-trips, and the gamut matrices. When a formula in the prose and `curves.py` disagree, `curves.py` is authoritative.
+
 ---
 
 ## How to Use This Guide
