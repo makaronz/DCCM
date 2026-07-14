@@ -26,6 +26,8 @@ Sources:
   ACEScc (S-2014-003), ACEScct (S-2016-001), ACESproxy (S-2013-002)
 """
 
+import sys
+
 import numpy as np
 
 # ============================================================================
@@ -380,5 +382,4 @@ if __name__ == "__main__":
         print(f"  [{'PASS' if good else 'FAIL'}] {name:22s} row-sums==1 (D65->D65)  err={rs:.1e}")
 
     print("\n" + ("ALL CHECKS PASSED" if ok else "*** SOME CHECKS FAILED ***"))
-    import sys
     sys.exit(0 if ok else 1)
