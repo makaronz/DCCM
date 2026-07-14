@@ -3513,10 +3513,18 @@ Blue: (0.0, 0.0)
 | Rec.2020 | (0.708, 0.292) | (0.170, 0.797) | (0.131, 0.046) | D65 (0.3127, 0.3290) |
 | ACES AP0 | (0.7347, 0.2653) | (0.0, 1.0) | (0.0001, \-0.0770) | (0.32168, 0.33767) |
 | ACES AP1 | (0.713, 0.293) | (0.165, 0.830) | (0.128, 0.044) | (0.32168, 0.33767) |
-| ARRI Wide Gamut 4 | (0.684, 0.313) | (0.228, 0.848) | (0.0861, \-0.102) | D65 (0.3127, 0.3290) |
-| REDWideGamutRGB | (0.795, 0.331) | (0.0953, 1.0123) | (0.0664, \-0.075) | D65 (0.3127, 0.3290) |
-| S-Gamut3 | (0.766, 0.274) | (0.172, 0.953) | (0.102, \-0.031) | D65 (0.3127, 0.3290) |
-| S-Gamut3.Cine | (0.680, 0.320) | (0.225, 0.775) | (0.130, 0.045) | D65 (0.3127, 0.3290) |
+| ARRI Wide Gamut 3 | (0.6840, 0.3130) | (0.2210, 0.8480) | (0.0861, \-0.1020) | D65 (0.3127, 0.3290) |
+| ARRI Wide Gamut 4 | (0.7347, 0.2653) | (0.1424, 0.8576) | (0.0991, \-0.0308) | D65 (0.3127, 0.3290) |
+| REDWideGamutRGB | (0.780308, 0.304253) | (0.121595, 1.493994) | (0.095612, \-0.084589) | D65 (0.3127, 0.3290) |
+| S-Gamut3 | (0.730, 0.280) | (0.140, 0.855) | (0.100, \-0.050) | D65 (0.3127, 0.3290) |
+| S-Gamut3.Cine | (0.766, 0.275) | (0.225, 0.800) | (0.089, \-0.087) | D65 (0.3127, 0.3290) |
+
+<!-- ERRATA: the previous rows for ARRI Wide Gamut 4, REDWideGamutRGB, S-Gamut3
+     and S-Gamut3.Cine were mislabeled/garbled (the "AWG4" row actually held
+     AWG3 primaries; S-Gamut3 and .Cine were mixed together; RED's green was
+     wrong). Values above are the official published primaries and reproduce the
+     official ARRI AWG3->Rec.709 matrix to ~1e-6. Verified in curves.py. -->
+
 
   *   
 *   
