@@ -40,7 +40,10 @@ _LOGC3 = dict(cut=0.010591, a=5.555556, b=0.052272, c=0.247190,
 def linear_to_logc3(x):
     p = _LOGC3
     x = np.asarray(x, dtype=np.float64)
-    return np.where(x > p['cut'], p['c'] * np.log10(p['a'] * x + p['b']) + p['d'],
+    # np.where evaluates both branches, so clamp the log argument to stay
+    # positive for elements handled by the linear (toe) branch.
+    log_arg = np.maximum(p['a'] * x + p['b'], 1e-10)
+    return np.where(x > p['cut'], p['c'] * np.log10(log_arg) + p['d'],
                     p['e'] * x + p['f'])
 
 
@@ -66,7 +69,8 @@ def _logc4_params():
 def linear_to_logc4(x):
     a, b, c, s, t = _logc4_params()
     x = np.asarray(x, dtype=np.float64)
-    return np.where(x >= t, (np.log2(a * x + 64.0) - 6.0) / 14.0 * b + c, (x - t) / s)
+    log_arg = np.maximum(a * x + 64.0, 1e-10)
+    return np.where(x >= t, (np.log2(log_arg) - 6.0) / 14.0 * b + c, (x - t) / s)
 
 
 def logc4_to_linear(y):
@@ -77,9 +81,12 @@ def logc4_to_linear(y):
 
 # --- Sony S-Log3 (S-Gamut3 and S-Gamut3.Cine share this curve) ---
 def linear_to_slog3(x):
-    x = np.maximum(np.asarray(x, dtype=np.float64), 0.0)
+    # No non-negative clamp: the linear toe below 0.01125 also encodes
+    # under-black (negative) scene-linear values so they round-trip.
+    x = np.asarray(x, dtype=np.float64)
+    log_arg = np.maximum((x + 0.01) / 0.19, 1e-10)
     return np.where(x >= 0.01125,
-                    (420.0 + np.log10((x + 0.01) / 0.19) * 261.5) / 1023.0,
+                    (420.0 + np.log10(log_arg) * 261.5) / 1023.0,
                     (x * (171.2102946929 - 95.0) / 0.01125 + 95.0) / 1023.0)
 
 
@@ -95,7 +102,8 @@ def slog3_to_linear(y):
 def linear_to_log3g10(x):
     a, b, c, g = 0.224282, 155.975327, 0.01, 15.1927
     x = np.asarray(x, dtype=np.float64) + c
-    return np.where(x >= 0.0, a * np.log10(x * b + 1.0), x * g)
+    log_arg = np.maximum(x * b + 1.0, 1e-10)
+    return np.where(x >= 0.0, a * np.log10(log_arg), x * g)
 
 
 def log3g10_to_linear(y):
@@ -108,8 +116,10 @@ def log3g10_to_linear(y):
 # --- Panasonic V-Log ---
 def linear_to_vlog(x):
     b, c, d, cut = 0.00873, 0.241514, 0.598206, 0.01
-    x = np.maximum(np.asarray(x, dtype=np.float64), 0.0)
-    return np.where(x >= cut, c * np.log10(x + b) + d, 5.6 * x + 0.125)
+    # No non-negative clamp: the linear toe below 0.01 preserves under-black.
+    x = np.asarray(x, dtype=np.float64)
+    log_arg = np.maximum(x + b, 1e-10)
+    return np.where(x >= cut, c * np.log10(log_arg) + d, 5.6 * x + 0.125)
 
 
 def vlog_to_linear(y):
@@ -176,7 +186,9 @@ def pq_to_linear(y, l_peak=10000.0):
     n = np.power(np.maximum(np.asarray(y, dtype=np.float64), 0.0), 1.0 / _PQ_M2)
     num = np.maximum(n - _PQ_C1, 0.0)
     den = _PQ_C2 - _PQ_C3 * n
-    l_norm = np.power(np.where(den > 1e-12, num / den, 0.0), 1.0 / _PQ_M1)
+    # np.divide with a mask avoids evaluating num/den where den <= 0.
+    ratio = np.divide(num, den, out=np.zeros_like(num), where=den > 1e-12)
+    l_norm = np.power(np.maximum(ratio, 0.0), 1.0 / _PQ_M1)
     return l_norm * 10000.0 / l_peak
 
 
@@ -316,7 +328,7 @@ if __name__ == "__main__":
     check("LogC3", linear_to_logc3(g), 0.391007)
     check("LogC4", linear_to_logc4(g), 0.278396)
     check("S-Log3", linear_to_slog3(g), 0.410557)
-    check("Log3G10", linear_to_log3g10(g), 1.0 / 3.0, tol=1e-3)
+    check("Log3G10", linear_to_log3g10(g), 1.0 / 3.0)
     check("V-Log", linear_to_vlog(g), 0.423311)
     check("Canon Log 2", linear_to_canonlog2(g), 0.379865)
     check("Rec.709", linear_to_rec709(g), 0.409008)
@@ -343,12 +355,13 @@ if __name__ == "__main__":
         ("ACESproxy10", linear_to_acesproxy10, acesproxy10_to_linear),
     ]
     for name, enc, dec in pairs:
+        # ACESproxy clips below CV 64, so test it above its low-end floor;
+        # every curve here is invertible over [0, 1] with no clipping, so the
+        # full range (including the top endpoint) is validated.
         xr = xs if name != "ACESproxy10" else np.clip(xs, 2e-3, 1.0)
         rt = np.asarray(dec(enc(xr))).ravel()
-        # curves that clip encode >1 (S-Log3/LogC*) lose the very top; mask it
-        m = np.asarray(enc(xr)).ravel() < 0.999
-        err = float(np.max(np.abs(rt[m] - xr[m]))) if m.any() else 0.0
-        good = err < 2e-3
+        err = float(np.max(np.abs(rt - xr)))
+        good = err < 1e-4
         ok = ok and good
         print(f"  [{'PASS' if good else 'FAIL'}] {name:24s} max|err|={err:.2e}")
 
@@ -357,7 +370,7 @@ if __name__ == "__main__":
                          [-0.070573, 1.334613, -0.264039],
                          [-0.021102, -0.226954, 1.248056]])
     d = float(np.max(np.abs(gamut_matrix("arri_wide_gamut3") - off_awg3)))
-    good = d < 1e-4
+    good = d < 1e-5
     ok = ok and good
     print(f"  [{'PASS' if good else 'FAIL'}] AWG3->Rec.709 vs official ARRI matrix  max|d|={d:.2e}")
     for name, M in MATRICES_TO_REC709.items():
